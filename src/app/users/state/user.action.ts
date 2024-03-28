@@ -1,6 +1,5 @@
-// import {Action} from '@ngrx/store'
 import { Action } from '@ngrx/store';
-import {Update} from '@ngrx/entity';
+import { Update } from '@ngrx/entity';
 import { User } from '../users.model';
 
 export enum UserActionTypes {
@@ -19,9 +18,7 @@ export enum UserActionTypes {
   UPDATE_USERS = '[User] Update Users',
   UPDATE_USERS_SUCCESS = '[User] Update Users Success',
   UPDATE_USERS_FAIL = '[User] Update Users Fail',
-
 }
-
 
 export class LoadUsers implements Action {
   readonly type = UserActionTypes.LOAD_USERS;
@@ -42,7 +39,6 @@ export class LoadUsersFail implements Action {
 export class LoadUser implements Action {
   readonly type = UserActionTypes.LOAD_USER;
   constructor(public payload: number) {}
-
 }
 
 export class LoadUserSuccess implements Action {
@@ -60,7 +56,6 @@ export class LoadUserFail implements Action {
 export class CreateUser implements Action {
   readonly type = UserActionTypes.CREATE_USERS;
   constructor(public payload: User) {}
-
 }
 
 export class CreateUserSuccess implements Action {
@@ -78,7 +73,6 @@ export class CreateUserFail implements Action {
 export class UpdateUser implements Action {
   readonly type = UserActionTypes.UPDATE_USERS;
   constructor(public payload: User) {}
-
 }
 
 export class UpdateUserSuccess implements Action {
@@ -96,7 +90,6 @@ export class UpdateUserFail implements Action {
 export class DeleteUser implements Action {
   readonly type = UserActionTypes.DELETE_USERS;
   constructor(public payload: number) {}
-
 }
 
 export class DeleteUserSuccess implements Action {
@@ -110,6 +103,3 @@ export class DeleteUserFail implements Action {
 
   constructor(public payload: string) {}
 }
-
-
-// export type Action = LoadUsers | LoadUsersSuccess | LoadUsersFail;

@@ -57,13 +57,13 @@ export class UserEffect {
         map(
           (updateUser: User) =>
             new userActions.UpdateUserSuccess({
-              id: String(updateUser.id) ,
+              id: String(updateUser.id),
               changes: updateUser,
-          })
+            })
         ),
         catchError((err) => of(new userActions.UpdateUserFail(err)))
       )
-        )
+    )
   );
   @Effect()
   deleteUser$: Observable<Action> = this.actions$.pipe(

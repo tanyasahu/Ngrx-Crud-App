@@ -20,8 +20,7 @@ export class UserEditComponent implements OnInit {
   ) {
     this.customer$ = new Observable<User>();
     this.userForm = this.fb.group({
-      // Initialize userForm using FormBuilder
-      name: ['', Validators.required], // Define form controls with initial value and validators
+      name: ['', Validators.required],
       phone: ['', Validators.required],
       address: ['', Validators.required],
       id: null,
@@ -29,14 +28,14 @@ export class UserEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    const customer$: Observable<User |undefined > = this.store.select(
+    const customer$: Observable<User | undefined> = this.store.select(
       fromUser.getCurrentUser
     );
 
-    console.log(customer$)
+    console.log(customer$);
     customer$.subscribe((currentCustomer) => {
       if (currentCustomer) {
-        console.log(currentCustomer,'subscribed value')
+        console.log(currentCustomer, 'subscribed value');
         this.userForm.patchValue({
           name: currentCustomer.name,
           phone: currentCustomer.phone,
@@ -45,8 +44,7 @@ export class UserEditComponent implements OnInit {
         });
       }
     });
-    console.log(customer$, 'ngonit')
-
+    console.log(customer$, 'ngonit');
   }
 
   updateUser() {

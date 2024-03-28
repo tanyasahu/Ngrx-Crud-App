@@ -5,7 +5,6 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 export interface userState extends EntityState<User> {
-  // users: User[];
   selectedUserId: number | null;
   loading: boolean;
   loaded: boolean;
@@ -29,39 +28,9 @@ export const defaultUser: userState = {
 
 export const initialState = userAdapter.getInitialState(defaultUser);
 
-// export function userReducer{
-
-// }
-
-// const initialState = {
-//   users: [
-//     {
-//       name: 'Test user 1',
-//       phone: '7999038739',
-//       address: 'indore',
-//       id: 1,
-//     },
-//   ],
-//   loading: false,
-//   loaded: true,
-// };
-
 export function userReducer(state: any = initialState, action: any): userState {
   switch (action.type) {
-    // case userActions.UserActionTypes.LOAD_USERS: {
-    //   return {
-    //     ...state,
-    //     loading: true,
-    //     // loaded: false,
-    //   };
-    // }
     case userActions.UserActionTypes.LOAD_USERS_SUCCESS: {
-      // return {
-      //   ...state,
-      //   loading: true,
-      //   loaded: false,
-      //   users: action.payload,
-      // };
       return userAdapter.addAll(action.payload, {
         ...state,
         loading: false,
@@ -80,7 +49,7 @@ export function userReducer(state: any = initialState, action: any): userState {
     }
 
     case userActions.UserActionTypes.LOAD_USER_SUCCESS: {
-      console.log(action,'check')
+      console.log(action, 'check');
       return userAdapter.addOne(action.payload, {
         ...state,
         selectedUserId: action.payload.id,
@@ -107,7 +76,7 @@ export function userReducer(state: any = initialState, action: any): userState {
     }
 
     case userActions.UserActionTypes.UPDATE_USERS_SUCCESS: {
-      console.log(action.payload,state,'update')
+      console.log(action.payload, state, 'update');
       return userAdapter.updateOne(action.payload, state);
     }
 
@@ -140,7 +109,6 @@ const getUserFeatureState = createFeatureSelector<userState>('users');
 
 export const getUsers = createSelector(
   getUserFeatureState,
-  // (state: userState) => state.users
   userAdapter.getSelectors().selectAll
 );
 
@@ -159,15 +127,15 @@ export const getUsersLoaded = createSelector(
   (state: userState) => state.loaded
 );
 
-export const getCurrentUserId=createSelector(
+export const getCurrentUserId = createSelector(
   getUserFeatureState,
-  (state: userState)=>state.selectedUserId
-)
+  (state: userState) => state.selectedUserId
+);
 
-export const getCurrentUser= createSelector(
+export const getCurrentUser = createSelector(
   getUserFeatureState,
   getCurrentUserId,
-  state=> {
-    return state.entities[state.selectedUserId?state.selectedUserId:-1]
+  (state) => {
+    return state.entities[state.selectedUserId ? state.selectedUserId : -1];
   }
-  )
+);

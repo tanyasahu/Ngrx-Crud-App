@@ -7,8 +7,10 @@ import { UsersModule } from '../app/users/users.module';
 import { CommonModule } from '@angular/common';
 const routes: Routes = [
   { path: '', component: UserFormComponent },
-  { path: 'users',
-   loadChildren: () => import('../app/users/users.module').then(m =>m.UsersModule)
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('../app/users/users.module').then((m) => m.UsersModule),
   },
 ];
 

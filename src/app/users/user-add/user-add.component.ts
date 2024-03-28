@@ -17,8 +17,8 @@ export class UserAddComponent implements OnInit {
     private fb: FormBuilder,
     private store: Store<fromUser.AppState>
   ) {
-    this.userForm = this.fb.group({ // Initialize userForm using FormBuilder
-      name: ['', Validators.required], // Define form controls with initial value and validators
+    this.userForm = this.fb.group({
+      name: ['', Validators.required], 
       phone: ['', Validators.required],
       address: ['', Validators.required]
     });
