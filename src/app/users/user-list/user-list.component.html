@@ -1,0 +1,27 @@
+<h3>Users</h3>
+<table class="table table-hover ">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="5" class="alert alert-danger" *ngIf="error$ | async as error">{{error}}</td>
+    </tr>
+    <tr>
+    <tr *ngFor="let user of (users$ |async)">
+      <th scope="row">{{user.name}}</th>
+      <td>{{user.phone}}</td>
+      <td>{{user.address}}</td>
+      <th>
+        <a (click)="editUser(user)">edit</a>
+        <br>
+        <a (click)="deleteUser(user)">delete</a>
+      </th>
+    </tr>
+  </tbody>
+</table>
