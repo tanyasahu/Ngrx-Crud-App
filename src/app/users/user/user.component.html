@@ -1,3 +1,12 @@
-<app-user-add class="add"></app-user-add>
-<app-user-list class="list"></app-user-list>
-<app-user-edit class="edit"></app-user-edit>
+<button (click)="addModal = true" class="btn btn-primary mb-2 mr-2" style="float: right;">Add User</button>
+<app-user-add
+  *ngIf="addModal"
+  (closed)="addModal = false"
+  class="add"
+></app-user-add>
+<app-user-list (openModal)="editModal=true" class="list"></app-user-list>
+<app-user-edit
+  *ngIf="editModal"
+  (closed)="editModal = false"
+  class="edit"
+></app-user-edit>

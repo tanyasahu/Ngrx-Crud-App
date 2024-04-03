@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { User } from '../users.model';
@@ -13,6 +13,7 @@ import * as fromUser from '../state/user.reducer';
 export class UserEditComponent implements OnInit {
   userForm: FormGroup;
   customer$: Observable<User | undefined>;
+  @Output() closed = new EventEmitter<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -32,10 +33,8 @@ export class UserEditComponent implements OnInit {
       fromUser.getCurrentUser
     );
 
-    console.log(customer$);
     customer$.subscribe((currentCustomer) => {
       if (currentCustomer) {
-        console.log(currentCustomer, 'subscribed value');
         this.userForm.patchValue({
           name: currentCustomer.name,
           phone: currentCustomer.phone,
@@ -44,7 +43,6 @@ export class UserEditComponent implements OnInit {
         });
       }
     });
-    console.log(customer$, 'ngonit');
   }
 
   updateUser() {
@@ -56,5 +54,11 @@ export class UserEditComponent implements OnInit {
     };
 
     this.store.dispatch(new userActions.UpdateUser(updatedUser));
+    this.close();
   }
+  
+  close() {
+    this.closed.emit();
+  }
+
 }

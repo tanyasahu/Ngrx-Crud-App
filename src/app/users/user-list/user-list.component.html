@@ -1,4 +1,4 @@
-<h3>Users</h3>
+<h3 class="ms-2">Users</h3>
 <table class="table table-hover">
   <thead>
     <tr class="table-primary">
@@ -29,5 +29,13 @@
         <a (click)="deleteUser(user)">delete</a>
       </th>
     </tr>
+
+
   </tbody>
 </table>
+
+<!-- <div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= users.length">Next</button>
+</div> -->

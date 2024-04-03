@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements OnInit {
+  addModal:boolean=false
+  editModal:boolean=false
   constructor() {}
 
   ngOnInit(): void {}
+
+ 
 }

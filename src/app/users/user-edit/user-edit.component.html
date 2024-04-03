@@ -1,36 +1,62 @@
-<div class="mt-4">
-  <h3>Edit User</h3>
-  <form [formGroup]="userForm" (submit)="updateUser()" class="form-inline mb-4">
-    <label class="sr-only" for="Name">Name</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <input
-        type="text"
-        class="form-control"
-        formControlName="name"
-        placeholder="name"
-      />
+<!-- <h3>Add User</h3> -->
+<div class="modal-overlay">
+  <div class="modals">
+    <div class="modal-header">
+      <h2>Edit User</h2>
+      <!-- <button (click)="closeModal()">X</button> -->
     </div>
+    <div class="modal-body">
+      <!-- Modal content goes here -->
 
-    <label class="sr-only" for="Phone">Phone</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <input
-        type="text"
-        class="form-control"
-        formControlName="phone"
-        placeholder="Phone"
-      />
+      <form [formGroup]="userForm" (submit)="updateUser()" class=" mb-4">
+        <label class="sr-only" for="Name">Name</label>
+        <div class="input-group mb-2 me-sm-2">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="name"
+          />
+        </div>
+
+        <label class="sr-only" for="Phone">Phone</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="phone"
+            placeholder="Phone"
+          />
+        </div>
+
+        <label class="sr-only" for="Address">Address</label>
+        <div class="input-group mb-2 mr-sm-2">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="address"
+            placeholder="Address"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-2 ">Update User</button>
+        <button (click)="close()" class="btn btn-primary mb-2 ms-2">Close</button>
+
+      </form>
     </div>
-
-    <label class="sr-only" for="Address">Address</label>
-    <div class="input-group mb-2 mr-sm-2">
-      <input
-        type="text"
-        class="form-control"
-        formControlName="address"
-        placeholder="Address"
-      />
-    </div>
-
-    <button type="submit" class="btn btn-primary mb-2">Update User</button>
-  </form>
+  </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

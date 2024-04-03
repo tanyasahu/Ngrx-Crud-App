@@ -49,7 +49,6 @@ export function userReducer(state: any = initialState, action: any): userState {
     }
 
     case userActions.UserActionTypes.LOAD_USER_SUCCESS: {
-      console.log(action, 'check');
       return userAdapter.addOne(action.payload, {
         ...state,
         selectedUserId: action.payload.id,
@@ -76,7 +75,6 @@ export function userReducer(state: any = initialState, action: any): userState {
     }
 
     case userActions.UserActionTypes.UPDATE_USERS_SUCCESS: {
-      console.log(action.payload, state, 'update');
       return userAdapter.updateOne(action.payload, state);
     }
 
